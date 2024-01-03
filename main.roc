@@ -27,8 +27,8 @@ b = {x:4.3, y: -4.2, z: 3.1, w: 0.0}
 expect isVector b == Bool.true
 expect isPoint b == Bool.false
 
-point = \x,y,z -> {x:x, y:y, z:z, w:1}
-vector = \x,y,z -> {x:x, y:y, z:z, w:0}
+point = \x,y,z -> {x, y, z, w:1}
+vector = \x,y,z -> {x, y, z, w:0}
 
 #point() creates tuples with w=1
 p = point 4 -4 3
@@ -40,3 +40,8 @@ v = vector 4 -4 3
 
 expect v == {x:4, y:-4, z:3, w:0}
 
+
+
+# gotcha so far:
+# why not? isVector = .w == 0.0
+# why local vars go into scope of above fun definitions? just avoiding name confusion?
